@@ -1,0 +1,424 @@
+// description : 모델 생성하였고 엔터티 간의 관계도 지정을 해주었음
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL") 
+}
+
+// 01. 회원 관련 모델 생성
+model Users {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  student_number     Int
+  nickname           String
+  email              String   @unique
+  password           String
+  signup_date        DateTime @default(now())
+  major              String
+  membership_grade_id Int?    @unique
+  is_logged_in      Boolean   @default(false)
+  // relations
+  profile         Profiles?   @relation("UserProfile")
+
+  chatmessage       ChatMessage[]       @relation("UserMessages") 
+  chatparticipant   ChatParticipant[]    @relation("UserChatRoomParticipants")   
+
+  post       Post[]       @relation("UserPosts") 
+  userLikesDislikes         Reaction?   @relation("UserLikesDislikes")
+  userComments       Comment[]       @relation("UserComments") 
+
+
+  mileage         Mileage []       @relation("UsersTrade")
+  userBuyer       MileageTrade?    @relation("UserBuyer")  
+  userSeller       MileageTrade?    @relation("UserSeller")  
+
+  evaluator       Evaluator?       @relation("EvaluatorUser")    
+  evaluatee       Evaluatee?       @relation("EvaluateeUser") 
+  membershipGrade     MembershipGrade?   @relation(fields: [membership_grade_id], references: [membershipgrade_id])
+  gradeChangeRecords  GradeChangeRecord[] @relation("UserGradeChangeRecords") 
+  alarmSettings          AlarmSetting[]       @relation("UserAlarmSettings")
+  alarms                 Alarm[]              @relation("UserAlarms")
+  searchHistories    SearchHistory[]   @relation("UserSearchHistories")
+}
+
+model Profiles {
+  profile_id         Int      @id @default(autoincrement())
+  user_id            Int      @unique
+  profile_picture    String?
+  introduction       String?
+  contact            String?
+  social_media_links String?
+  // relation
+  user        Users       @relation("UserProfile", fields: [user_id], references: [id])
+}
+
+
+// 02. 채팅 관련 모델 생성
+model ChatRoom {
+  chatroom_id          Int                 @id @default(autoincrement())
+  chatroom_name        String   
+  chatroom_type        ChatRoomType 
+  created_at           DateTime            @default(now())
+  status               ChatRoomStatus 
+  //relation
+  chatmessage   ChatMessage[]    @relation("ChatRoomMessages") 
+  chatparticipant   ChatParticipant[]   @relation("ChatRoomParticipants") 
+}
+
+enum ChatRoomType {
+  INDIVIDUAL
+  GROUP
+}
+
+enum ChatRoomStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model ChatMessage {
+  message_id     Int      @id @default(autoincrement())
+  chatroom_id    Int      
+  sender_id      Int
+  content        String   @db.Text
+  read_status    Boolean  @default(false)
+  message_type   String   @db.VarChar(255)
+  attachment     String   @db.VarChar(255)
+  sent_at        DateTime @default(now())
+  send_status    SendStatus
+  delete_status   Boolean  @default(false)
+  
+  // relation 
+  user        Users       @relation("UserMessages", fields: [sender_id], references: [id])
+  chatroom         ChatRoom         @relation("ChatRoomMessages", fields: [chatroom_id], references: [chatroom_id])
+}
+
+enum SendStatus {
+  SUCCESS
+  FAIL
+}
+
+model ChatParticipant {
+  participant_id Int      @id @default(autoincrement())
+  chatroom_id    Int
+  user_id        Int
+  owner_status   OwnerStatus
+  join_date      DateTime  @default(now())
+  role           ParticipantRole
+  leave_date     DateTime?
+
+  // relation 
+  user         Users         @relation("UserChatRoomParticipants", fields: [user_id], references: [id])
+  chatroom      ChatRoom      @relation("ChatRoomParticipants", fields: [chatroom_id], references: [chatroom_id]) 
+}
+
+enum OwnerStatus {
+  OWNER
+  PARTICIPANT
+}
+
+enum ParticipantRole {
+  ADMIN
+  PARTICIPANT
+}
+
+// 03. 게시글 관련 모델
+model Post {
+  post_id      Int      @id @default(autoincrement())
+  author_id    Int
+  title        String   @db.VarChar(255)
+  content      String   @db.Text
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  views        Int      @default(0)
+  parent_category_id  Int
+  sub_category_id  Int
+  post_mileage Int      @default(0)
+  status       PostStatus
+
+  //relation
+  user      Users  @relation("UserPosts", fields: [author_id], references: [id])
+  parentCategory      ParentCategory  @relation("CategoryPosts", fields: [parent_category_id], references: [parentcategory_id])  
+  mileagetrade    MileageTrade[]   @relation("PostTrade")
+  postReports    Report[]   @relation("PostReports")
+  postLikesDislikes    Reaction[]   @relation("PostLikesDislikes")
+  postComments    Comment[]   @relation("PostComments")
+}
+
+enum PostStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model ParentCategory {
+  parentcategory_id   Int      @id @default(autoincrement())
+  parentcategory_name ParentCategoryName
+
+  //relation 
+  categoryPosts       Post[]       @relation("CategoryPosts") 
+  subcategories       SubCategory[] @relation("ParentSubCategories")
+}
+
+enum ParentCategoryName { 
+  INFORMATION
+  TIP
+  PLAYGROUND
+}
+
+model SubCategory {
+  subcategory_id   Int      @id @default(autoincrement())
+  subcategory_name SubCategoryName
+  parentcategory_id Int 
+  //relation
+  parentCategory   ParentCategory @relation("ParentSubCategories", fields: [parentcategory_id], references: [parentcategory_id])
+}
+
+enum SubCategoryName {
+  INSCNOOL
+  OUTSCHOOL
+  TEST
+  JOB
+}
+
+model Report {
+  report_id     Int      @id @default(autoincrement())
+  reporter_id   Int
+  post_id       Int
+  category_id   Int
+  report_type   String   @db.VarChar(255)
+  reported_at   DateTime @default(now())
+  status        ReportStatus
+
+  //relation
+  postReports      Post  @relation("PostReports", fields: [post_id], references: [post_id])  
+
+}
+
+enum ReportStatus {
+  PROCESSING
+  COMPLETED
+  REJECTED
+}
+
+model Reaction {
+  reaction_id   Int      @id @default(autoincrement())
+  post_id       Int
+  user_id       Int      @unique
+  category_id   Int
+  reaction_type ReactionType
+  reacted_at    DateTime @default(now())
+
+  //relation
+  postLikesDislikes      Post  @relation("PostLikesDislikes", fields: [post_id], references: [post_id])  
+  userLikesDislikes      Users  @relation("UserLikesDislikes", fields: [user_id], references: [id])  
+}
+
+enum ReactionType {
+  LIKE
+  DISLIKE
+}
+
+model Comment {
+  comment_id       Int      @id @default(autoincrement())
+  post_id          Int
+  author_id        Int
+  content          String   @db.Text
+  created_at       DateTime @default(now())
+  status           CommentStatus
+  parent_comment_id Int?
+
+  // relaltion
+  postComments      Post  @relation("PostComments", fields: [post_id], references: [post_id])  
+  userComments      Users  @relation("UserComments", fields: [author_id], references: [id])  
+
+}
+
+enum CommentStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// [03] 마일리지 관련 모델
+// [03-1] 마일리지 모델
+model Mileage {
+  mileage_id   Int      @id @default(autoincrement())
+  user_id      Int      
+  mileage      Int      @default(0)
+
+  //relation
+  user         Users[]     @relation("UsersTrade") 
+}
+
+// [03-2] 마일리지 거래 모델
+model MileageTrade {
+  record_id       Int         @id @default(autoincrement())
+  buyer_id        Int         @unique
+  seller_id       Int         @unique
+  post_id         Int       
+  traded_at       DateTime    @default(now()) 
+  description     String?
+  // relation
+  buyer          Users       @relation("UserBuyer", fields: [buyer_id], references: [id])
+  seller         Users       @relation("UserSeller", fields: [seller_id], references: [id])
+  post           Post        @relation("PostTrade", fields: [post_id], references: [post_id]) // 게시물 관계 추가
+}
+
+// [04] 매너 관련 모델 
+// [04-1] 평가자 관련 모델 
+model Evaluator {
+  evaluator_id Int      @id @default(autoincrement())
+  user_id      Int      @unique
+
+  //relation
+  user            Users             @relation("EvaluatorUser", fields: [user_id], references: [id]) // User 모델과의 관계
+  mannerReactions   MannerReaction[]  @relation("RecordsReaction")
+}
+
+// [04-2] 피평가자 관련 모델 
+model Evaluatee {
+  evaluatee_id Int      @id @default(autoincrement())
+  user_id      Int      @unique    
+
+  // relation
+  user            Users             @relation("EvaluateeUser", fields: [user_id], references: [id]) // User 모델과의 관계
+  manner            Manner?          @relation("HasManner") 
+  mannerReactions   MannerReaction[]  @relation("ReceivesReaction")
+}
+
+// [04-3] 매너 관련 모델 
+model Manner {
+  manner_id     Int      @id @default(autoincrement())
+  user_id        Int
+  like_count     Int      @default(0)
+  dislike_count  Int      @default(0)
+  manner_face    MannerFace
+
+  //relation
+  evaluatee_id      Int?             @unique // FK
+  evaluatee        Evaluatee?        @relation("HasManner", fields: [evaluatee_id], references: [evaluatee_id]) 
+  mannerReaction   MannerReaction[]  @relation("UpdatesManner")
+}
+
+enum MannerFace {
+  GOOD
+  NORMAL
+  BAD
+}
+
+// [04-4] 반응 관련 모델 
+model MannerReaction {
+  mannerReaction_id            Int      @id @default(autoincrement())
+  evaluator_id   Int
+  evaluatee_id   Int
+  manner_id      Int  //???WHY?
+  reaction      mannerReactionType
+  reacted_at     DateTime @default(now())
+
+  //relation
+  evaluator         Evaluator        @relation("RecordsReaction", fields: [evaluator_id], references: [evaluator_id])
+  evaluatee         Evaluatee        @relation("ReceivesReaction", fields: [evaluatee_id], references: [evaluatee_id])
+  manner            Manner           @relation("UpdatesManner", fields: [manner_id], references: [manner_id])
+}
+
+enum mannerReactionType {
+  GOOD
+  BAD
+}
+
+// [05] 등급 관련 모델 
+// [05-1] 회원 등급 관련 모델 
+model MembershipGrade {
+  membershipgrade_id Int      @id @default(autoincrement())
+  grade_name         String   @db.VarChar(255)
+  benefits           String   @db.Text
+  description        String   @db.Text
+
+  // relation
+  user               Users?             @relation 
+}
+
+// [05-2] 등급 변동 관련 모델 
+model GradeChangeRecord {
+  grade_change_id    Int      @id @default(autoincrement())
+  user_id            Int      @unique
+  changed_at         DateTime @default(now())
+  previous_grade     PreviousGrade
+  new_grade          NewGrade
+  description        String?   @db.VarChar(255)
+
+  // relation
+  user               Users               @relation("UserGradeChangeRecords", fields: [user_id], references: [id]) 
+}
+
+enum PreviousGrade {
+  VVIP
+  VIP
+  BASIC
+}
+
+enum NewGrade {
+  VVIP
+  VIP
+  BASIC
+}
+
+// [06] 알람 관련 모델
+// [06-1] 알람 수신 관련 모델
+model AlarmSetting {
+  setting_id        Int              @id @default(autoincrement())
+  user_id           Int              
+  notification_type NotificationType
+  receive_status    ReceiveStatus
+
+  // relations
+  user                Users                     @relation("UserAlarmSettings", fields: [user_id], references: [id])
+}
+
+enum NotificationType {
+  COMMENT
+  CHAT
+  SYSTEM_NOTICE
+}
+
+enum ReceiveStatus {
+  RECEIVED
+  OPT_OUT
+}
+
+// [06-2] 알람 기능 관련 모델
+model Alarm {
+  alarm_id    Int      @id @default(autoincrement())
+  user_id     Int     
+  content     String   @db.Text
+  created_at  DateTime @default(now())
+
+  // relations
+  user                Users                     @relation("UserAlarms", fields: [user_id], references: [id])
+}
+
+// [07] 검색어 관련 모델
+// [07-1] 검색어 관련 엔터티
+model SearchKeyword {
+  keyword_id   Int      @id @default(autoincrement())
+  keyword      String   @db.VarChar(255)
+  search_count Int      @default(0)
+  created_at   DateTime @default(now())
+
+  // relation
+  searchHistories SearchHistory[] @relation("KeywordSearchHistories")
+}
+
+// [07-2] 검색 기록 관련 엔터티
+model SearchHistory {
+  history_id    Int      @id @default(autoincrement())
+  user_id       Int      
+  keyword_id    Int      
+  searched_at   DateTime @default(now())
+
+  // relation
+  user         Users         @relation("UserSearchHistories", fields: [user_id], references: [id])
+  keyword      SearchKeyword @relation("KeywordSearchHistories", fields: [keyword_id], references: [keyword_id])
+}
