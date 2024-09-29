@@ -426,3 +426,12 @@ model SearchHistory {
   user         Users         @relation("UserSearchHistories", fields: [user_id], references: [id])
   keyword      SearchKeyword @relation("KeywordSearchHistories", fields: [keyword_id], references: [keyword_id])
 }
+
+// [08] delight에서 끌고 온 활동 정보
+model campusInfo {
+  id          Int     @id @default(autoincrement())
+  title       String
+  coverImage  String
+  date        String
+  institution String
+}
