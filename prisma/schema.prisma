@@ -138,6 +138,7 @@ model Post {
   sub_category_id  Int
   post_mileage Int      @default(0)
   status       PostStatus
+  likes_count  Int
 
   //relation
   user      Users  @relation("UserPosts", fields: [author_id], references: [id])
@@ -177,9 +178,10 @@ model SubCategory {
 }
 
 enum SubCategoryName {
-  INSCNOOL
-  OUTSCHOOL
-  TEST
+  CAMPUS
+  SUPPORTERS
+  CERTIFICATION
+  CONTEST
   JOB
 }
 
