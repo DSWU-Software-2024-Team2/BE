@@ -143,6 +143,7 @@ model Post {
   //relation
   user      Users  @relation("UserPosts", fields: [author_id], references: [id])
   parentCategory      ParentCategory  @relation("CategoryPosts", fields: [parent_category_id], references: [parentcategory_id])  
+  subCategory       SubCategory      @relation("PostSubCategories", fields: [sub_category_id], references: [subcategory_id])
   mileagetrade    MileageTrade[]   @relation("PostTrade")
   postReports    Report[]   @relation("PostReports")
   postLikesDislikes    Reaction[]   @relation("PostLikesDislikes")
@@ -175,6 +176,7 @@ model SubCategory {
   parentcategory_id Int 
   //relation
   parentCategory   ParentCategory @relation("ParentSubCategories", fields: [parentcategory_id], references: [parentcategory_id])
+  posts              Post[]          @relation("PostSubCategories") 
 }
 
 enum SubCategoryName {
