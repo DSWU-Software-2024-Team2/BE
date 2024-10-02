@@ -24,9 +24,6 @@ model Users {
   // relations
   profile         Profiles?   @relation("UserProfile")
 
-  chatmessage       ChatMessage[]       @relation("UserMessages") 
-  chatparticipant   ChatParticipant[]    @relation("UserChatRoomParticipants")   
-
   post       Post[]       @relation("UserPosts") 
   userLikesDislikes         Reaction?   @relation("UserLikesDislikes")
   userComments       Comment[]       @relation("UserComments") 
@@ -57,75 +54,7 @@ model Profiles {
 }
 
 
-// 02. 채팅 관련 모델 생성
-model ChatRoom {
-  chatroom_id          Int                 @id @default(autoincrement())
-  chatroom_name        String   
-  chatroom_type        ChatRoomType 
-  created_at           DateTime            @default(now())
-  status               ChatRoomStatus 
-  //relation
-  chatmessage   ChatMessage[]    @relation("ChatRoomMessages") 
-  chatparticipant   ChatParticipant[]   @relation("ChatRoomParticipants") 
-}
-
-enum ChatRoomType {
-  INDIVIDUAL
-  GROUP
-}
-
-enum ChatRoomStatus {
-  ACTIVE
-  INACTIVE
-}
-
-model ChatMessage {
-  message_id     Int      @id @default(autoincrement())
-  chatroom_id    Int      
-  sender_id      Int
-  content        String   @db.Text
-  read_status    Boolean  @default(false)
-  message_type   String   @db.VarChar(255)
-  attachment     String   @db.VarChar(255)
-  sent_at        DateTime @default(now())
-  send_status    SendStatus
-  delete_status   Boolean  @default(false)
-  
-  // relation 
-  user        Users       @relation("UserMessages", fields: [sender_id], references: [id])
-  chatroom         ChatRoom         @relation("ChatRoomMessages", fields: [chatroom_id], references: [chatroom_id])
-}
-
-enum SendStatus {
-  SUCCESS
-  FAIL
-}
-
-model ChatParticipant {
-  participant_id Int      @id @default(autoincrement())
-  chatroom_id    Int
-  user_id        Int
-  owner_status   OwnerStatus
-  join_date      DateTime  @default(now())
-  role           ParticipantRole
-  leave_date     DateTime?
-
-  // relation 
-  user         Users         @relation("UserChatRoomParticipants", fields: [user_id], references: [id])
-  chatroom      ChatRoom      @relation("ChatRoomParticipants", fields: [chatroom_id], references: [chatroom_id]) 
-}
-
-enum OwnerStatus {
-  OWNER
-  PARTICIPANT
-}
-
-enum ParticipantRole {
-  ADMIN
-  PARTICIPANT
-}
-
-// 03. 게시글 관련 모델
+// 02. 게시글 관련 모델
 model Post {
   post_id      Int      @id @default(autoincrement())
   author_id    Int
