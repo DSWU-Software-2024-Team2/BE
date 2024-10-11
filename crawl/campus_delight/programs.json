@@ -1,428 +1,570 @@
 [
     {
-        "title": "2024-2학기 교수자-학습자 콜라보 프로젝트",
-        "coverImage": "/attachment/view/32347/cover.jpg?ts=1727240590",
-        "date": "2024.09.25(Wed)",
-        "institution": "교수학습개발센터"
-    },
-    {
-        "title": "2024년 「취업컨설팅(잡매칭)프로그램」",
-        "coverImage": "/attachment/view/30930/cover.jpg?ts=1726708903",
-        "date": "2024.09.10(Tue)",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "2024-2  글로벌튜터링",
-        "coverImage": "/attachment/view/31654/cover.jpg?ts=1727313561",
-        "date": "2024.09.09(Mon)",
-        "institution": "교수학습개발센터"
-    },
-    {
-        "title": "제4회 도서관 사진공모 포토에세이 「책과 떠나는 캠퍼스 투어」",
-        "coverImage": "/attachment/view/31298/cover.jpg?ts=1725933767",
-        "date": "2024.09.16(Mon)",
-        "institution": "도서관"
-    },
-    {
         "title": "2024학년도  덕성여대 W쇼핑 영상컨텐츠공모전",
-        "coverImage": "/attachment/view/31097/cover.jpg?ts=1725262993",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31097/cover.jpg?ts=1725262993",
         "date": "2024.09.02(Mon)",
-        "institution": "창업센터"
+        "institution": "창업센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024년도 중견기업 바로알기 취업특강",
-        "coverImage": "/attachment/view/31185/cover.jpg?ts=1727415048",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31185/cover.jpg?ts=1727415048",
         "date": "2024.10.08(Tue) 18:30",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2 학생참여 공모형 워크숍 주제공모",
-        "coverImage": "/attachment/view/32523/cover.jpg?ts=1727338698",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32523/cover.jpg?ts=1727855771",
         "date": "2024.09.26(Thu)",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024년도 2학기 바이어스",
-        "coverImage": "/attachment/view/31092/cover.jpg?ts=1725254834",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31092/cover.jpg?ts=1725254834",
         "date": "2024.09.01(Sun)",
-        "institution": "글로벌 융합대학"
+        "institution": "글로벌 융합대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도  창업아이템 경진대회",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32237/cover.jpg?ts=1727851451",
         "date": "2024.09.09(Mon)",
-        "institution": "창업센터"
+        "institution": "창업센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 넥스트드림 - 꿈을 이루는 포트폴리오",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.10.17(Thu) 16:30",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/32238/cover.jpg?ts=1727312317",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32238/cover.jpg?ts=1727312317",
         "date": "2024.10.16(Wed) 14:00",
-        "institution": "산학연구과"
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[인권센터]2024 찾아가는 재학생 폭력예방교육(2차)",
-        "coverImage": "/attachment/view/31001/cover.jpg?ts=1726030970",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31001/cover.jpg?ts=1726030970",
         "date": "2024.10.23(Wed) 17:30",
-        "institution": "부속/부설기관"
+        "institution": "부속/부설기관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도 융복합 교양인 아이디어 공모전",
-        "coverImage": "/attachment/view/30926/cover.jpg?ts=1725612399",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/30926/cover.jpg?ts=1728030380",
         "date": "2024.09.09(Mon)",
-        "institution": "차미리사교양대학"
+        "institution": "차미리사교양대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 커리어 플랫폼 사회진출(4학년) 프로그램",
-        "coverImage": "/attachment/view/31691/cover.jpg?ts=1727158177",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31691/cover.jpg?ts=1727158177",
         "date": "2024.10.22(Tue)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도 덕성 나다움(I:DS) 스피치 대회 청중모집",
-        "coverImage": "/attachment/view/31689/cover.jpg?ts=1727051885",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31689/cover.jpg?ts=1727051885",
         "date": "2024.09.23(Mon)",
-        "institution": "차미리사교양대학"
+        "institution": "차미리사교양대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도 덕성 나다움(I:DS) 스피치 대회",
-        "coverImage": "/attachment/view/30956/cover.jpg?ts=1724378011",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/30956/cover.jpg?ts=1728030489",
         "date": "2024.09.23(Mon)",
-        "institution": "차미리사교양대학"
+        "institution": "차미리사교양대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 커리어플랫폼 1학년 프로그램",
-        "coverImage": "/attachment/view/31786/cover.jpg?ts=1727080300",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31786/cover.jpg?ts=1727080300",
         "date": "2024.10.22(Tue)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024년도  면접시리즈2(모의면접편)",
-        "coverImage": "/attachment/view/31372/cover.jpg?ts=1727070325",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31372/cover.jpg?ts=1727070325",
         "date": "2024.10.25(Fri) 00:00",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024  DUKSUNG 지역협업 아이디어 공모전",
-        "coverImage": "/attachment/view/31930/cover.jpg?ts=1727224863",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32237/cover.jpg?ts=1727851451",
         "date": "2024.09.23(Mon)",
-        "institution": "창업지원단"
+        "institution": "창업지원단",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 넥스트드림 - 꿈을 이루는 포트폴리오",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32626/cover.jpg?ts=1728017988",
+        "date": "2024.10.24(Thu) 16:30",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024 하반기 온라인 일본기업 채용설명회",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31930/cover.jpg?ts=1727224863",
+        "date": "2024.10.23(Wed) 18:00",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024년도 공기업 길라잡이",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32538/cover.jpg?ts=1727850564",
         "date": "2024.10.28(Mon)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024학년도 생성형 AI 프롬프트대회",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32237/cover.jpg?ts=1727851451",
+        "date": "2024.10.30(Wed) 18:00",
+        "institution": "차미리사교양대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 넥스트드림 - 꿈을 이루는 포트폴리오",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.10.31(Thu) 16:30",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32358/cover.jpg?ts=1727327681",
         "date": "2024.10.31(Thu) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
-        "date": "2024.11.05(Tue) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
-        "date": "2024.11.21(Thu) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/28195/cover.jpg?ts=1711632746",
-        "date": "2024.11.28(Thu) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "아미공마일리지(아미공챌린지 (Army-0 challenge))",
-        "coverImage": "/attachment/view/31060/cover.jpg?ts=1724205849",
-        "date": "2024.03.27(Wed)",
-        "institution": "과학기술대학"
-    },
-    {
-        "title": "[2024-2] 데이터 활용 대학 자율혁신을 위한 정책 공모(DS-데이터톤)",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
-        "date": "2024.09.02(Mon)",
-        "institution": "교육혁신성과관리센터"
-    },
-    {
-        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/28634/cover.jpg?ts=1714551787",
-        "date": "2024.12.05(Thu) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "2024 재학생 생명존중 교육",
-        "coverImage": "/attachment/view/32540/cover.jpg?ts=1727427392",
-        "date": "2024.03.21(Thu)",
-        "institution": "학생상담센터"
-    },
-    {
-        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
-        "coverImage": "/attachment/view/31191/cover.jpg?ts=1725256461",
-        "date": "2024.12.12(Thu) 14:00",
-        "institution": "산학연구과"
-    },
-    {
-        "title": "2024학년도 2학기  진로길라JOB이(캐치업프로그램)",
-        "coverImage": "/attachment/view/29138/cover.jpg?ts=1716250714",
-        "date": "2024.09.02(Mon)",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "[인권센터] 2024 재학생 폭력예방교육",
-        "coverImage": "/attachment/view/31110/cover.jpg?ts=1724817104",
-        "date": "2024.05.02(Thu)",
-        "institution": "부속/부설기관"
-    },
-    {
-        "title": "2024-2 심리검사 및 상담",
-        "coverImage": "/attachment/view/28875/cover.jpg?ts=1714551812",
-        "date": "2024.09.02(Mon)",
-        "institution": "학생상담센터"
-    },
-    {
-        "title": "2024년 재학생 스마트폰 과의존 예방교육",
-        "coverImage": "/attachment/view/29927/cover.jpg?ts=1720067472",
-        "date": "2024.03.27(Wed)",
-        "institution": "학생상담센터"
-    },
-    {
-        "title": "[재맞고] 2024 온라인 청년미래직진",
-        "coverImage": "/attachment/view/29751/cover.jpg?ts=1726121727",
-        "date": "2024.06.03(Mon)",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "[재맞고] 2024 DS 취업점프업",
-        "coverImage": "/attachment/view/29750/cover.jpg?ts=1726121762",
-        "date": "2024.05.27(Mon)",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "[재맞고] 2024 DS 진로빌드업",
-        "coverImage": "/attachment/view/32358/cover.jpg?ts=1727327681",
-        "date": "2024.05.27(Mon)",
-        "institution": "대학일자리본부"
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "글로벌 이슈 카드 뉴스 콘테스트",
-        "coverImage": "/attachment/view/31592/cover.jpg?ts=1726019590",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
         "date": "2024.09.30(Mon)",
-        "institution": "글로벌커뮤니케이션센터"
+        "institution": "글로벌커뮤니케이션센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32237/cover.jpg?ts=1727851451",
+        "date": "2024.11.05(Tue) 14:00",
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 넥스트드림 - 꿈을 이루는 포트폴리오",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32237/cover.jpg?ts=1727851451",
+        "date": "2024.11.07(Thu) 16:30",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 넥스트드림 - 꿈을 이루는 포트폴리오",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.11.14(Thu) 16:30",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.11.21(Thu) 14:00",
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/28195/cover.jpg?ts=1711632746",
+        "date": "2024.11.28(Thu) 14:00",
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "아미공마일리지(아미공챌린지 (Army-0 challenge))",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31060/cover.jpg?ts=1724205849",
+        "date": "2024.03.27(Wed)",
+        "institution": "과학기술대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[2024-2] 데이터 활용 대학 자율혁신을 위한 정책 공모(DS-데이터톤)",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.09.02(Mon)",
+        "institution": "교육혁신성과관리센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/28634/cover.jpg?ts=1714551787",
+        "date": "2024.12.05(Thu) 14:00",
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024 재학생 생명존중 교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32540/cover.jpg?ts=1727427392",
+        "date": "2024.03.21(Thu)",
+        "institution": "학생상담센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 PBL, 창의융합, 캡스톤디자인 현장연계 산학연 교과 학습역량강화교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31191/cover.jpg?ts=1725256461",
+        "date": "2024.12.12(Thu) 14:00",
+        "institution": "산학연구과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024학년도 2학기  진로길라JOB이(캐치업프로그램)",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/29138/cover.jpg?ts=1716250714",
+        "date": "2024.09.02(Mon)",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[인권센터] 2024 재학생 폭력예방교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31110/cover.jpg?ts=1724817104",
+        "date": "2024.05.02(Thu)",
+        "institution": "부속/부설기관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2 심리검사 및 상담",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/28875/cover.jpg?ts=1714551812",
+        "date": "2024.09.02(Mon)",
+        "institution": "학생상담센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024년 재학생 스마트폰 과의존 예방교육",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/29927/cover.jpg?ts=1720067472",
+        "date": "2024.03.27(Wed)",
+        "institution": "학생상담센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 2024 온라인 청년미래직진",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/29751/cover.jpg?ts=1726121727",
+        "date": "2024.06.03(Mon)",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 2024 DS 취업점프업",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/29750/cover.jpg?ts=1726121762",
+        "date": "2024.05.27(Mon)",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "[재맞고] 2024 DS 진로빌드업",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31592/cover.jpg?ts=1726019590",
+        "date": "2024.05.27(Mon)",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 창의적 굿즈 제작",
-        "coverImage": "/attachment/view/31592/cover.jpg?ts=1726019590",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31592/cover.jpg?ts=1726019590",
         "date": "2024.10.28(Mon) 16:30",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 창의적 굿즈 제작",
-        "coverImage": "/attachment/view/31072/cover.jpg?ts=1725585984",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31072/cover.jpg?ts=1725585984",
         "date": "2024.10.29(Tue) 16:30",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[2024-2학기] 학습컨설팅 _1:1컨설팅",
-        "coverImage": "/attachment/view/31071/cover.jpg?ts=1725522307",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31071/cover.jpg?ts=1725522307",
         "date": "2024.09.30(Mon)",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[2024-2학기] 학습컨설팅 _학습전략/대학전공선택/대학적응력 검사 및 해석특강",
-        "coverImage": "/attachment/view/31071/cover.jpg?ts=1725522307",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31071/cover.jpg?ts=1725522307",
         "date": "2024.09.27(Fri) 19:00",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[2024-2학기] 학습컨설팅 _학습전략/대학전공선택/대학적응력 검사 및 해석특강",
-        "coverImage": "/attachment/view/31183/cover.jpg?ts=1727065977",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31183/cover.jpg?ts=1727065977",
         "date": "2024.09.26(Thu) 19:00",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2학기 덕성튜터링",
-        "coverImage": "/attachment/view/31592/cover.jpg?ts=1726019590",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31592/cover.jpg?ts=1726019590",
         "date": "2024.09.26(Thu)",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 창의적 굿즈 제작",
-        "coverImage": "/attachment/view/31064/cover.jpg?ts=1726121635",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31064/cover.jpg?ts=1726121635",
         "date": "2024.09.26(Thu) 16:30",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[재맞고] 빌드업 - 진로부트캠프",
-        "coverImage": "/attachment/view/31592/cover.jpg?ts=1726019590",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31592/cover.jpg?ts=1726019590",
         "date": "2024.09.26(Thu)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 창의적 굿즈 제작",
-        "coverImage": "/attachment/view/30900/cover.jpg?ts=1727064092",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/32347/cover.jpg?ts=1727686885",
         "date": "2024.09.25(Wed) 16:30",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "2024-2학기 교수자-학습자 콜라보 프로젝트",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/30900/cover.jpg?ts=1727064092",
+        "date": "2024.09.25(Wed)",
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 사회진출 선배와의 집단 멘토링",
-        "coverImage": "/attachment/view/31100/cover.jpg?ts=1724910607",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31100/cover.jpg?ts=1724910607",
         "date": "2024.09.24(Tue) 18:30",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "제59회 독서카페 '책과 함께하는 상상여행'",
-        "coverImage": "/attachment/view/31100/cover.jpg?ts=1724910607",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31100/cover.jpg?ts=1724910607",
         "date": "2024.09.24(Tue) 18:00",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "제59회 독서카페 '책과 함께하는 상상여행'",
-        "coverImage": "/attachment/view/31767/cover.jpg?ts=1726107013",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31767/cover.jpg?ts=1726107013",
         "date": "2024.09.24(Tue) 18:00",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 하반기 육군 학사장교 캠퍼스 리쿠르팅",
-        "coverImage": "/attachment/view/31284/cover.jpg?ts=1725504850",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31284/cover.jpg?ts=1725504850",
         "date": "2024.09.24(Tue) 15:00",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2 덕성 교양교육 서포터즈 4기",
-        "coverImage": "/attachment/view/31198/cover.jpg?ts=1725520277",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31198/cover.jpg?ts=1725520277",
         "date": "2024.09.24(Tue)",
-        "institution": "차미리사교양대학"
+        "institution": "차미리사교양대학",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 덕성 5K Plus O2O 캠퍼스타운 [도봉청년 창업교육 D-School] - 2. '청년 전문 창업 교육'",
-        "coverImage": "/attachment/view/31071/cover.jpg?ts=1725522307",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31071/cover.jpg?ts=1725522307",
         "date": "2024.09.24(Tue)",
-        "institution": "캠퍼스타운조성단"
+        "institution": "캠퍼스타운조성단",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "[2024-2학기] 학습컨설팅 _학습전략/대학전공선택/대학적응력 검사 및 해석특강",
-        "coverImage": "/attachment/view/31026/cover.jpg?ts=1726791196",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31026/cover.jpg?ts=1727841580",
         "date": "2024.09.23(Mon) 19:00",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "구글 애널리틱스 데이터분석 자격과정",
-        "coverImage": "/attachment/view/31089/cover.jpg?ts=1726911156",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31089/cover.jpg?ts=1726911156",
         "date": "2024.09.23(Mon)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 LALA아카데미_전산회계 2급",
-        "coverImage": "/attachment/view/31962/cover.jpg?ts=1726808004",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31962/cover.jpg?ts=1726808004",
         "date": "2024.09.23(Mon)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 미국 종합물류기업 FNS社 해외취업  캠퍼스 채용설명회",
-        "coverImage": "/attachment/view/30953/cover.jpg?ts=1727397753",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/30953/cover.jpg?ts=1727397753",
         "date": "2024.09.23(Mon) 17:00",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도 2학기 Global Lounge",
-        "coverImage": "/attachment/view/31213/cover.jpg?ts=1727425038",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31213/cover.jpg?ts=1728007526",
         "date": "2024.09.23(Mon)",
-        "institution": "국제교류과"
+        "institution": "국제교류과",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "(모집계속)2024 커리어 길라잡이 특강",
-        "coverImage": "/attachment/view/31080/cover.jpg?ts=1726825988",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31080/cover.jpg?ts=1726825988",
         "date": "2024.09.23(Mon)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024-2 진로설계 워크샵",
-        "coverImage": "/attachment/view/31120/cover.jpg?ts=1724906663",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31298/cover.jpg?ts=1727853829",
         "date": "2024.09.21(Sat) 10:00",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
+    },
+    {
+        "title": "제4회 도서관 사진공모 포토에세이 「책과 떠나는 캠퍼스 투어」",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31120/cover.jpg?ts=1724906663",
+        "date": "2024.09.16(Mon)",
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "DS English Writing Program",
-        "coverImage": "/attachment/view/31068/cover.jpg?ts=1724389372",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31068/cover.jpg?ts=1724389372",
         "date": "2024.09.11(Wed)",
-        "institution": "글로벌커뮤니케이션센터"
+        "institution": "글로벌커뮤니케이션센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024 제2회 도서관 사진 특강 「작품이 되는 사진」",
-        "coverImage": "/attachment/view/31708/cover.jpg?ts=1726729041",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31708/cover.jpg?ts=1726729041",
         "date": "2024.09.11(Wed) 17:00",
-        "institution": "도서관"
+        "institution": "도서관",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "사회복지실천 전문가 양성을 위한 임파워먼트 (역량증진) & 멘토링 프로그램",
-        "coverImage": "/attachment/view/31706/cover.jpg?ts=1726046366",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31706/cover.jpg?ts=1726046366",
         "date": "2024.09.11(Wed)",
-        "institution": "사회복지학전공"
+        "institution": "사회복지학전공",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024학년도 2학기 덕성 챌린지 프로젝트",
-        "coverImage": "/attachment/view/31121/cover.jpg?ts=1725433376",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31121/cover.jpg?ts=1725433376",
         "date": "2024.09.10(Tue)",
-        "institution": "교수학습개발센터"
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "DS English Listening Program",
-        "coverImage": "/attachment/view/31019/cover.jpg?ts=1727063389",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31019/cover.jpg?ts=1727063389",
         "date": "2024.09.10(Tue)",
-        "institution": "글로벌커뮤니케이션센터"
+        "institution": "글로벌커뮤니케이션센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
         "title": "2024년도 하반기 직무적성검사(대기업) 특강",
-        "coverImage": "/attachment/view/31058/cover.jpg?ts=1726034702",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/30930/cover.jpg?ts=1726708903",
         "date": "2024.09.10(Tue)",
-        "institution": "대학일자리본부"
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
-        "title": "2024-2 취업 길라잡이 특강 - 면접별 대응전략 -",
-        "coverImage": "/attachment/view/31054/cover.jpg?ts=1726034680",
-        "date": "2024.09.06(Fri) 18:15",
-        "institution": "대학일자리본부"
+        "title": "2024년 「취업컨설팅(잡매칭)프로그램」",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31654/cover.jpg?ts=1727679310",
+        "date": "2024.09.10(Tue)",
+        "institution": "대학일자리본부",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     },
     {
-        "title": "2024-2 취업 길라잡이 특강 - 입사지원서 작성법 -",
-        "coverImage": "/attachment/view/31036/cover.jpg?ts=1725345377",
-        "date": "2024.09.05(Thu) 18:15",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "2024 하반기 대한항공 캠퍼스 채용설명회",
-        "coverImage": "/attachment/view/31050/cover.jpg?ts=1726034655",
-        "date": "2024.09.05(Thu) 15:00",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "2024-2 취업 길라잡이 특강 - 인적성 검사 -",
-        "coverImage": "/attachment/view/31134/cover.jpg?ts=1726808633",
-        "date": "2024.09.04(Wed) 18:00",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "2024-2 덕성 캐치업(Fly-up 멘토링)",
-        "coverImage": "/attachment/view/31049/cover.jpg?ts=1726034601",
-        "date": "2024.09.04(Wed)",
-        "institution": "교수학습개발센터"
-    },
-    {
-        "title": "2024-2 취업 길라잡이 특강 -직무분석 및 기업분석-",
-        "coverImage": "/attachment/view/31224/cover.jpg?ts=1725598870",
-        "date": "2024.09.03(Tue) 18:00",
-        "institution": "대학일자리본부"
-    },
-    {
-        "title": "2024-2 투게더! 덕성 학습 공동체(자율학습공동체)",
-        "coverImage": "/attachment/view/31041/cover.jpg?ts=1726034636",
-        "date": "2024.09.03(Tue)",
-        "institution": "교수학습개발센터"
+        "title": "2024-2  글로벌튜터링",
+        "coverImage": "https://delight.duksung.ac.kr/attachment/view/31058/cover.jpg?ts=1726034702",
+        "date": "2024.09.09(Mon)",
+        "institution": "교수학습개발센터",
+        "parentCategory_id": 1,
+        "subCategory_id": 1
     }
 ]

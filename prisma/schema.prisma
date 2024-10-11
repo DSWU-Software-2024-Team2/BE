@@ -19,7 +19,7 @@ model Users {
   password           String
   signup_date        DateTime @default(now())
   major              String
-  membership_grade_id Int?    @unique
+  //membership_grade_id Int?    @unique // middelTable 만듦
   is_logged_in      Boolean   @default(false)
   // relations
   profile         Profiles?   @relation("UserProfile")
@@ -28,14 +28,16 @@ model Users {
   userLikesDislikes         Reaction?   @relation("UserLikesDislikes")
   userComments       Comment[]       @relation("UserComments") 
 
+  carts     Cart[]  @relation("UserCarts")
 
   mileage         Mileage []       @relation("UsersTrade")
-  userBuyer       MileageTrade?    @relation("UserBuyer")  
-  userSeller       MileageTrade?    @relation("UserSeller")  
+  userBuyer       MileageTrade[]    @relation("UserBuyer")  
+  userSeller       MileageTrade[]    @relation("UserSeller")  
 
   evaluator       Evaluator?       @relation("EvaluatorUser")    
   evaluatee       Evaluatee?       @relation("EvaluateeUser") 
-  membershipGrade     MembershipGrade?   @relation(fields: [membership_grade_id], references: [membershipgrade_id])
+
+  memberships        UserMembership[]   @relation("UserMemberships") // 중간 테이블과의 관계
   gradeChangeRecords  GradeChangeRecord[] @relation("UserGradeChangeRecords") 
   alarmSettings          AlarmSetting[]       @relation("UserAlarmSettings")
   alarms                 Alarm[]              @relation("UserAlarms")
@@ -66,8 +68,11 @@ model Post {
   parent_category_id  Int
   sub_category_id  Int
   post_mileage Int      @default(0)
-  status       PostStatus
-  likes_count  Int
+  likes_count  Int  @default(0)
+  dislikes_count  Int  @default(0)
+  likes_mileage  Int      @default(0)
+  dislikes_mileage  Int      @default(0)
+  //status       PostStatus
 
   //relation
   user      Users  @relation("UserPosts", fields: [author_id], references: [id])
@@ -77,6 +82,7 @@ model Post {
   postReports    Report[]   @relation("PostReports")
   postLikesDislikes    Reaction[]   @relation("PostLikesDislikes")
   postComments    Comment[]   @relation("PostComments")
+  carts     Cart[]   @relation("PostCarts")
 }
 
 enum PostStatus {
@@ -90,7 +96,8 @@ model ParentCategory {
 
   //relation 
   categoryPosts       Post[]       @relation("CategoryPosts") 
-  subcategories       SubCategory[] @relation("ParentSubCategories")
+  campusInfos CampusInfo[]
+  Activitys   Activity[]
 }
 
 enum ParentCategoryName { 
@@ -102,10 +109,10 @@ enum ParentCategoryName {
 model SubCategory {
   subcategory_id   Int      @id @default(autoincrement())
   subcategory_name SubCategoryName
-  parentcategory_id Int 
-  //relation
-  parentCategory   ParentCategory @relation("ParentSubCategories", fields: [parentcategory_id], references: [parentcategory_id])
+  //relation 
   posts              Post[]          @relation("PostSubCategories") 
+  campusInfos CampusInfo[]
+  Activitys   Activity[]
 }
 
 enum SubCategoryName {
@@ -140,7 +147,7 @@ model Reaction {
   reaction_id   Int      @id @default(autoincrement())
   post_id       Int
   user_id       Int      @unique
-  category_id   Int
+  //category_id   Int
   reaction_type ReactionType
   reacted_at    DateTime @default(now())
 
@@ -174,6 +181,19 @@ enum CommentStatus {
   INACTIVE
 }
 
+model Cart {
+  id        Int    @id @default(autoincrement())
+  user_id   Int
+  post_id   Int
+  is_active Boolean @default(true)
+  quantity  Int    @default(1) // Optional, if you want to allow multiple quantities
+  createdAt DateTime @default(now())
+  
+  // relations
+  user      Users   @relation("UserCarts", fields: [user_id], references: [id])
+  post      Post    @relation("PostCarts", fields: [post_id], references: [post_id])
+}
+
 // [03] 마일리지 관련 모델
 // [03-1] 마일리지 모델
 model Mileage {
@@ -182,17 +202,20 @@ model Mileage {
   mileage      Int      @default(0)
 
   //relation
-  user         Users[]     @relation("UsersTrade") 
+  user         Users     @relation("UsersTrade", fields: [user_id], references: [id])
 }
 
 // [03-2] 마일리지 거래 모델
 model MileageTrade {
   record_id       Int         @id @default(autoincrement())
-  buyer_id        Int         @unique
-  seller_id       Int         @unique
+  buyer_id        Int         
+  seller_id       Int         
   post_id         Int       
   traded_at       DateTime    @default(now()) 
   description     String?
+
+  @@unique([buyer_id, post_id]) // 같은 구매자가 같은 포스트에 대해 거래할 수 없도록 설정
+  
   // relation
   buyer          Users       @relation("UserBuyer", fields: [buyer_id], references: [id])
   seller         Users       @relation("UserSeller", fields: [seller_id], references: [id])
@@ -270,7 +293,18 @@ model MembershipGrade {
   description        String   @db.Text
 
   // relation
-  user               Users?             @relation 
+  users              UserMembership[]   @relation("UserMemberships") // 중간 테이블과의 관계
+}
+
+// [05-1-1] 사용자와 회원 등급 간의 중간 테이블
+model UserMembership {
+  id                Int         @id @default(autoincrement())
+  user_id            Int
+  membershipGrade_id Int
+
+  user              Users             @relation("UserMemberships", fields: [user_id], references: [id], map: "UserMembershipUserId_fkey")
+  membershipGrade   MembershipGrade   @relation("UserMemberships", fields: [membershipGrade_id], references: [membershipgrade_id], map: "UserMembershipMembershipGradeId_fkey")
+  @@unique([user_id]) 
 }
 
 // [05-2] 등급 변동 관련 모델 
@@ -336,7 +370,7 @@ model Alarm {
 // [07-1] 검색어 관련 엔터티
 model SearchKeyword {
   keyword_id   Int      @id @default(autoincrement())
-  keyword      String   @db.VarChar(255)
+  keyword      String   @db.VarChar(255) 
   search_count Int      @default(0)
   created_at   DateTime @default(now())
 
@@ -356,11 +390,33 @@ model SearchHistory {
   keyword      SearchKeyword @relation("KeywordSearchHistories", fields: [keyword_id], references: [keyword_id])
 }
 
-// [08] delight에서 끌고 온 활동 정보
-model campusInfo {
+// [08] information 게시판에 올릴 것들
+// [08-1] delight에서 가져온 교내 정보
+model CampusInfo {
   id          Int     @id @default(autoincrement())
   title       String
   coverImage  String
   date        String
   institution String
+  parentCategory_id  Int  @default(1)
+  subCategory_id Int  @default(1)
+
+  parentCategory     ParentCategory  @relation(fields: [parentCategory_id], references: [parentcategory_id])
+  subCategory        SubCategory     @relation(fields: [subCategory_id], references: [subcategory_id])
+}
+
+// [08-2] campuspick에서 가져온 교외(공모전) 정보
+model Activity {
+  id          Int     @id @default(autoincrement())
+  keyword      String
+  title String
+  host  String
+  dueDate        String
+  viewCount Int
+  coverImage String
+  parentCategory_id  Int  
+  subCategory_id Int  
+
+  parentCategory     ParentCategory  @relation(fields: [parentCategory_id], references: [parentcategory_id])
+  subCategory        SubCategory     @relation(fields: [subCategory_id], references: [subcategory_id])
 }
