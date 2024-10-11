@@ -145,18 +145,11 @@ model Post {
   parent_category_id  Int
   sub_category_id  Int
   post_mileage Int      @default(0)
-<<<<<<< HEAD
   likes_count  Int  @default(0)
   dislikes_count  Int  @default(0)
   likes_mileage  Int      @default(0)
   dislikes_mileage  Int      @default(0)
   //status       PostStatus
-=======
-  likes_count  Int      @default(0)
-  dislikes_count  Int      @default(0)
-  likes_mileage  Int      @default(0)
-  dislikes_mileage  Int      @default(0)
->>>>>>> 9aee417fa79ef433aee797247f70fe4ba33d2f72
 
   //relation
   user      Users  @relation("UserPosts", fields: [author_id], references: [id])
