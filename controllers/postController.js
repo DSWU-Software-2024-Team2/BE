@@ -1,46 +1,50 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient(); 
 
-//01. 새로운 게시글 작성
+// 01. 새로운 게시글 작성
 const Newpost = async (req, res) => {
-    const {poster, postname,posttext,parentCategoryId,subCategoryId } = req.body;
+    const { poster, title, content, parentCategoryId, subCategoryId } = req.body; // 변수명 변경
     try {
         const user = await prisma.users.findUnique({
             where: { id: parseInt(poster) },
-            include: { membershipGrade: true }
+            include: { memberships: { include: { membershipGrade: true } } } // memberships 관계 포함
         });
+
         if (!user) {
             return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
         }
 
-        if (!user.membershipGrade) {
+        const userMembership = user.memberships[0]; // 첫 번째 멤버십 가져오기
+        if (!userMembership || !userMembership.membershipGrade) {
             return res.status(404).json({ error: '사용자의 등급 정보가 없습니다.' });
         }
 
-        const benefits = user.membershipGrade.benefits;
+        const benefits = userMembership.membershipGrade.benefits;
 
         const newPost = await prisma.post.create({
             data: {
-                title:postname,
-                content:posttext,
+                title: title, // 일관되게 사용
+                content: content, // 일관되게 사용
                 user: {
-                connect: { id: parseInt(poster) } 
+                    connect: { id: parseInt(poster) }
                 },
-            parentCategory: {
-                connect: { parentcategory_id: parseInt(parentCategoryId) } 
-            },
-            subCategory: {
-                connect: { subcategory_id: parseInt(subCategoryId) } 
-            },
-            post_mileage: benefits
-          }
+                parentCategory: {
+                    connect: { parentcategory_id: parseInt(parentCategoryId) }
+                },
+                subCategory: {
+                    connect: { subcategory_id: parseInt(subCategoryId) }
+                },
+                post_mileage: benefits
+            }
         });
+
         res.status(201).json(newPost);
-      } catch (error) {
+    } catch (error) {
         console.error(error);
-        res.status(500).json({ error: '게시글 작성에 실패했습니다.' });
-      }
+        res.status(500).json({ error: '게시글 작성에 실패했습니다.', details: error.message });
+    }
 }
+
 // 02. 게시글 수정
 const EditPost = async (req, res) => {
     const postId = parseInt(req.params.id); 
@@ -136,4 +140,10 @@ const GetPost = async (req, res) => {
         console.error('Error fetching post:', error);
         res.status(500).json({ error: '게시물 조회에 실패했습니다.' });
     }
+};
+
+module.exports = {
+    Newpost,
+    EditPost,
+    GetPost
 };

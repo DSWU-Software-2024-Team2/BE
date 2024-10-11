@@ -27,7 +27,7 @@ async function insertCampusInfo(programs) {
 // JSON 파일 읽기
 async function main() {
     try {
-        const data = await fs.promises.readFile('crawl\\campus_delight\\programs.json', 'utf8');
+        const data = await fs.promises.readFile('programs.json', 'utf8');
         const programs = JSON.parse(data);
         await insertCampusInfo(programs);
     } catch (err) {

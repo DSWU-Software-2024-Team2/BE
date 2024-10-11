@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 // description : 모델 생성하였고 엔터티 간의 관계도 지정을 해주었음
 
 generator client {
@@ -29,9 +23,6 @@ model Users {
   is_logged_in      Boolean   @default(false)
   // relations
   profile         Profiles?   @relation("UserProfile")
-
-  chatmessage       ChatMessage[]       @relation("UserMessages") 
-  chatparticipant   ChatParticipant[]    @relation("UserChatRoomParticipants")   
 
   post       Post[]       @relation("UserPosts") 
   userLikesDislikes         Reaction?   @relation("UserLikesDislikes")
@@ -64,75 +55,6 @@ model Profiles {
   user        Users       @relation("UserProfile", fields: [user_id], references: [id])
 }
 
-
-// 02. 채팅 관련 모델 생성
-model ChatRoom {
-  chatroom_id          Int                 @id @default(autoincrement())
-  chatroom_name        String   
-  chatroom_type        ChatRoomType 
-  created_at           DateTime            @default(now())
-  status               ChatRoomStatus 
-  //relation
-  chatmessage   ChatMessage[]    @relation("ChatRoomMessages") 
-  chatparticipant   ChatParticipant[]   @relation("ChatRoomParticipants") 
-}
-
-enum ChatRoomType {
-  INDIVIDUAL
-  GROUP
-}
-
-enum ChatRoomStatus {
-  ACTIVE
-  INACTIVE
-}
-
-model ChatMessage {
-  message_id     Int      @id @default(autoincrement())
-  chatroom_id    Int      
-  sender_id      Int
-  content        String   @db.Text
-  read_status    Boolean  @default(false)
-  message_type   String   @db.VarChar(255)
-  attachment     String   @db.VarChar(255)
-  sent_at        DateTime @default(now())
-  send_status    SendStatus
-  delete_status   Boolean  @default(false)
-  
-  // relation 
-  user        Users       @relation("UserMessages", fields: [sender_id], references: [id])
-  chatroom         ChatRoom         @relation("ChatRoomMessages", fields: [chatroom_id], references: [chatroom_id])
-}
-
-enum SendStatus {
-  SUCCESS
-  FAIL
-}
-
-model ChatParticipant {
-  participant_id Int      @id @default(autoincrement())
-  chatroom_id    Int
-  user_id        Int
-  owner_status   OwnerStatus
-  join_date      DateTime  @default(now())
-  role           ParticipantRole
-  leave_date     DateTime?
-
-  // relation 
-  user         Users         @relation("UserChatRoomParticipants", fields: [user_id], references: [id])
-  chatroom      ChatRoom      @relation("ChatRoomParticipants", fields: [chatroom_id], references: [chatroom_id]) 
-}
-
-enum OwnerStatus {
-  OWNER
-  PARTICIPANT
-}
-
-enum ParticipantRole {
-  ADMIN
-  PARTICIPANT
-}
-
 // 03. 게시글 관련 모델
 model Post {
   post_id      Int      @id @default(autoincrement())
@@ -162,10 +84,10 @@ model Post {
   carts     Cart[]   @relation("PostCarts")
 }
 
-enum PostStatus {
-  ACTIVE
-  INACTIVE
-}
+//enum PostStatus {
+//  ACTIVE
+//  INACTIVE
+//}
 
 model ParentCategory {
   parentcategory_id   Int      @id @default(autoincrement())

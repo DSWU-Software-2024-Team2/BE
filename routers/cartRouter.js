@@ -22,6 +22,6 @@ router.delete('/items', deleteActiveCartItems);
 router.delete('/items/clear', clearCart); 
 
 // 05. 장바구니 아이템 활성화/비활성화 토글
-router.patch('/items/:itemId/toggle', toggleCartItemActive); 
+router.patch('/items/toggle', toggleCartItemActive); 
 
 module.exports = router; 

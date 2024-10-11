@@ -21,12 +21,17 @@ async function login(req, res) {
 
     // 02. 사용자 존재 여부 확인
     if (!user) {
-        return res.status(401).json({ message: '잘못된 이메일 또는 비밀번호입니다.' });
+        return res.status(401).json({ message: '없는 사용자입니다.' });
     }
 
     // 03. 비밀번호 확인
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) {
+    //const isValidPassword = await bcrypt.compare(password, user.password);
+    //if (!isValidPassword) {
+    //    return res.status(401).json({ message: '잘못된 이메일 또는 비밀번호입니다.' });
+    //}
+    
+    // 03. 비밀번호 확인 (일반 비교)
+    if (password !== user.password) {
         return res.status(401).json({ message: '잘못된 이메일 또는 비밀번호입니다.' });
     }
 

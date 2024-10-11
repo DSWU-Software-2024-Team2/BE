@@ -30,7 +30,7 @@ const validateCategoryId = async (categoryId, categoryModel, categoryName) => {
 
 // 01. 검색 관련 함수
 const searchPosts = async (req, res) => {
-    const { keyword, parentCategoryId = 0, subCategoryId = 0, page = 1, pageSize = 5 } = req.query;
+    const { keyword, parentCategoryId = 0, subCategoryId = 0 } = req.query;
 
     // 검색어가 두 글자 이상인지 확인
     if (keyword && keyword.length < 2) {
@@ -72,14 +72,12 @@ const searchPosts = async (req, res) => {
         const posts = await prisma.post.findMany({
             where: whereConditions,
             orderBy: { created_at: 'desc' },
-            skip: (page - 1) * pageSize, // 페이지 계산
-            take: parseInt(pageSize),      // 페이지당 개수
             include: { parentCategory: true, subCategory: true },
         });
 
         // 결과가 없으면 메시지 반환
         if (posts.length === 0) {
-            return res.status(404).json({ message: '검색 결과가 없습니다.' });
+            return res.json({ message: '검색 결과가 없습니다.' });
         }
 
         // 포맷팅된 결과 반환
