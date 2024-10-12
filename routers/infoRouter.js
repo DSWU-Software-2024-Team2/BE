@@ -1,21 +1,19 @@
+// description : 정보게시판 게시판 관련 라우터
 const express = require('express');
 const router = express.Router();
 infoController = require('../controllers/infoController'); 
 
-// 01. 정보 게시판 전체 목록
-//router.get('/info-posts', getAllInfoPosts);
-
-// 02. 정보 게시판 교내 목록
+// 01. 교내 정보 게시물 조회 
 router.get('/campus', infoController.getCampusInfoPosts);
 
-// 03. 정보 게시판 교외 목록
-//router.get('/external', infoController.getExternalInfoPosts);
+// 02. 교외 정보 게시물 조회 
+router.get('/external', infoController.getExternalInfoPosts);
 
-// 04. 정보 게시판 자격증 목록
-//router.get('/certifications', infoController.getCertificationInfoPosts);
+// 03. 자격증 정보 게시물 조회 
+router.get('/certifications', infoController.getCertificationInfoPosts);
 
-// 05. 정보 게시판 공모전 목록
-//router.get('/contests', infoController.getContestInfoPosts);
+// 04. 공모전 정보 게시물 조회 
+router.get('/contests', infoController.getContestInfoPosts);
 
 // 06. 정보 게시판 채용 목록
 //router.get('/jobs', infoController.getJobInfoPosts);

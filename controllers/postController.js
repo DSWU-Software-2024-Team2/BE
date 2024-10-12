@@ -48,12 +48,33 @@ const Newpost = async (req, res) => {
 // 02. 게시글 수정
 const EditPost = async (req, res) => {
     const postId = parseInt(req.params.id); 
-    const { title, content } = req.body;
+    const { title, content, userId } = req.body; // 사용자 ID 추가
 
     if (isNaN(postId)) {
         return res.status(400).json({ error: '유효하지 않은 ID입니다.' });
     }
+
+    const numericUserId = parseInt(userId); // userId를 숫자로 변환
+
+    if (isNaN(numericUserId)) {
+        return res.status(400).json({ error: '유효하지 않은 사용자 ID입니다.' });
+    }
+
     try {
+        // 게시글 조회
+        const post = await prisma.post.findUnique({
+            where: { post_id: postId }
+        });
+
+        // 게시글이 존재하는지 확인 및 작성자 확인
+        if (!post) {
+            return res.status(404).json({ error: '게시글을 찾을 수 없습니다.' });
+        }
+
+        if (post.author_id !== numericUserId) { // 현재 사용자의 ID와 게시글 작성자 ID 비교
+            return res.status(403).json({ error: '수정 권한이 없습니다.' });
+        }
+
         const updatedPost = await prisma.post.update({
             where: {
                 post_id: postId 
@@ -77,19 +98,26 @@ const EditPost = async (req, res) => {
     }
 };
 
-//03. 유/무료 게시글 조회
+
+// 03. 유/무료 게시글 조회
 const GetPost = async (req, res) => {
     const postId = parseInt(req.params.id); 
-    //const userId = req.user.id; -> 로그인이랑 연결하여 로그인 상태 확인 되는 경우 수정 예정
-    const userId = 2;
+    const { userId } = req.query; // 사용자 ID를 요청 본문에서 받음
+
     if (isNaN(postId)) {
         return res.status(400).json({ error: '유효하지 않은 ID입니다.' });
+    }
+
+    const numericUserId = parseInt(userId); // userId를 숫자로 변환
+    if (isNaN(numericUserId)) {
+        return res.status(400).json({ error: '유효하지 않은 사용자 ID입니다.' });
     }
 
     try {
         const post = await prisma.post.findUnique({
             where: { post_id: postId },
             include: {
+                images: true,
                 // author_id: { // 작성자 정보 포함
                 //     select: {
                 //         name: true, // 작성자 이름
@@ -103,25 +131,26 @@ const GetPost = async (req, res) => {
             return res.status(404).json({ error: '게시물을 찾을 수 없습니다.' });
         }
 
-      // 본인 게시글 = 바로 조회 가능
-      if (post.author_id === userId) {
+        // 본인 게시글 = 바로 조회 가능
+        if (post.author_id === numericUserId) {
+            return res.status(200).json({
+                post_id: post.post_id,
+                title: post.title,
+                content: post.content,
+                views: post.views, // 조회수 증가 X
+                likes: post.likes_count,
+                created_at: post.created_at,
+                post_mileage: post.post_mileage,
+                images: post.images.map(image => image.url)
+            });
+        }
 
-        return res.status(200).json({
-            post_id: post.post_id,
-            title: post.title,
-            content: post.content,
-            views: post.views, // 조회수 증가 X
-            likes: post.likes_count,
-            created_at: post.created_at,
-            post_mileage:post.post_mileage
-        });
-    }
         // 유료 게시물 여부 확인
         if (post.post_mileage > 0) {
             const hasPurchased = await prisma.mileageTrade.findFirst({
                 where: {
                     post_id: postId,
-                    buyer_id: userId
+                    buyer_id: numericUserId
                 }
             });
 
@@ -134,7 +163,6 @@ const GetPost = async (req, res) => {
             where: { post_id: postId },
             data: { views: post.views + 1 }
         });
-
 
         const author = await prisma.users.findUnique({
             where: { id: updatedPost.author_id },
@@ -164,15 +192,10 @@ const GetPost = async (req, res) => {
             likes: updatedPost.likes_count,
             dislikes: updatedPost.dislikes_count,
             created_at: updatedPost.created_at,
-            post_mileage:updatedPost.post_mileage,
+            post_mileage: updatedPost.post_mileage,
             author_name: author.name,
-            author_grade:author_mem1.grade_name
-            // author: {
-            //     name: updatedPost.author_id.name, // 작성자의 이름
-            //     membershipGrade: updatedPost.author_id.membershipGrade, // 작성자의 등급
-            //   },
-            //author_name: updatedPost.author.name, // 작성자 이름
-            //author_grade: updatedPost.author.grade // 작성자 등급
+            author_grade: author_mem1.grade_name,
+            images: updatedPost.images.map(image => image.url)
         });
 
     } catch (error) {
@@ -180,7 +203,6 @@ const GetPost = async (req, res) => {
         res.status(500).json({ error: '게시물 조회에 실패했습니다.' });
     }
 };
-
 
 module.exports = {
     Newpost,

@@ -82,6 +82,16 @@ model Post {
   postLikesDislikes    Reaction[]   @relation("PostLikesDislikes")
   postComments    Comment[]   @relation("PostComments")
   carts     Cart[]   @relation("PostCarts")
+  images               Image[]          @relation("PostImages")
+}
+
+model Image {
+  id        Int    @id @default(autoincrement())
+  post_id   Int
+  url       String @db.VarChar(255)
+
+  //relation
+  post      Post   @relation("PostImages", fields: [post_id], references: [post_id])
 }
 
 //enum PostStatus {
@@ -97,6 +107,10 @@ model ParentCategory {
   categoryPosts       Post[]       @relation("CategoryPosts") 
   campusInfos CampusInfo[]
   Activitys   Activity[]
+
+  Contest Contest[]
+
+  Licns Licns[]
 }
 
 enum ParentCategoryName { 
@@ -112,6 +126,10 @@ model SubCategory {
   posts              Post[]          @relation("PostSubCategories") 
   campusInfos CampusInfo[]
   Activitys   Activity[]
+
+  Contest Contest[]
+
+  Licns Licns[]
 }
 
 enum SubCategoryName {
@@ -404,10 +422,38 @@ model CampusInfo {
   subCategory        SubCategory     @relation(fields: [subCategory_id], references: [subcategory_id])
 }
 
-// [08-2] campuspick에서 가져온 교외(공모전) 정보
+// [08-2] campuspick에서 가져온 교외(대외활동) 정보
 model Activity {
   id          Int     @id @default(autoincrement())
-  keyword      String
+  //keyword      String
+  title String
+  host  String
+  dueDate        String
+  viewCount Int
+  coverImage String
+  parentCategory_id  Int  
+  subCategory_id Int  
+
+  parentCategory     ParentCategory  @relation(fields: [parentCategory_id], references: [parentcategory_id])
+  subCategory        SubCategory     @relation(fields: [subCategory_id], references: [subcategory_id])
+}
+
+// [08-3] campuspick에서 가져온 교외(공모전) 정보
+model Licns {
+  id                Int             @id @default(autoincrement())
+  license           String
+  organization      String
+  parentCategory_id Int  
+  subCategory_id    Int  
+
+  parentCategory    ParentCategory   @relation(fields: [parentCategory_id], references: [parentcategory_id])
+  subCategory       SubCategory      @relation(fields: [subCategory_id], references: [subcategory_id])
+}
+
+// [08-4] campuspick에서 가져온 교외(공모전) 정보
+model Contest {
+  id          Int     @id @default(autoincrement())
+  //keyword      String
   title String
   host  String
   dueDate        String

@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const TIP_CATEGORY_ID = 2; // 꿀팁 카테고리 ID
 
 // 01. 꿀팁 게시판 전체 목록 조회 (페이지네이션 제거)
-const getAllTips = async (req, res) => {
+const getAllTips = async (_, res) => {
     try {
         const includeOptions = {
             user: true,
