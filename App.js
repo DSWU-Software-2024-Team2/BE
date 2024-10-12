@@ -15,6 +15,7 @@ const searchRoutes = require('./routers/searchRouter');
 const cartRoutes = require('./routers/cartRouter');
 const payRoutes = require('./routers/payRouter');
 
+const userInfoRoutes = require('./routers/userInfoRouter');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -34,6 +35,8 @@ app.use('/api/react', reactionRoutes);
 
 app.use('/api/cart', cartRoutes);
 app.use('/api/payment', payRoutes);
+
+app.use('/api/userInfo', userInfoRoutes);
 
 
 // 연결 테스트
