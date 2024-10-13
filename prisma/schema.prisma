@@ -387,7 +387,7 @@ model Alarm {
 // [07-1] 검색어 관련 엔터티
 model SearchKeyword {
   keyword_id   Int      @id @default(autoincrement())
-  keyword      String   @db.VarChar(255) 
+  keyword      String   @unique @db.VarChar(255) 
   search_count Int      @default(0)
   created_at   DateTime @default(now())
 

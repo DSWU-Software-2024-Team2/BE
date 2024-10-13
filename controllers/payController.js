@@ -203,6 +203,14 @@ const directPayment = async (req, res) => {
             return res.status(400).json({ status: 'fail', message: '이미 존재하는 거래 기록입니다.' });
         }
 
+        // 장바구니에서 해당 게시물 제거
+        await prisma.cart.deleteMany({
+            where: {
+                user_id: Number(userId), // userId를 숫자로 변환하여 사용
+                post_id: Number(postId) // postId를 숫자로 변환하여 사용
+            }
+        });
+
         // 판매자 마일리지 업데이트
         await prisma.mileage.update({
             where: { mileage_id: sellerMileageRecord.mileage_id },
@@ -237,7 +245,5 @@ const directPayment = async (req, res) => {
         res.status(500).json({ status: 'error', message: '서버 오류가 발생했습니다. 오류 내용: ' + error.message });
     }
 };
-
-
 
 module.exports = { processPayment, directPayment };

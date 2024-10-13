@@ -1,5 +1,6 @@
 // description : 서버 시작 파일
 const express = require('express');
+const path = require('path');
 const cors = require('cors'); // CORS 모듈 추가
 const morgan = require('morgan');
 const authRoutes = require('./routers/authRouter');
@@ -38,6 +39,12 @@ app.use('/api/payment', payRoutes);
 
 app.use('/api/userInfo', userInfoRoutes);
 
+// 정적 파일 서빙
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// JSON 파싱 미들웨어
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // 연결 테스트
 app.get('/api/test', (req, res) => {

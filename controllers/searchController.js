@@ -105,44 +105,72 @@ const getRealTimeKeywords = async (req, res) => {
     }
 };
 
-// 03. 검색어 저장 및 카운팅
+//03. 검색어 저장 및 카운팅
 const saveSearchKeyword = async (req, res) => {
     const { user_id, keyword } = req.body;
 
     try {
-        // 먼저 keyword가 존재하는지 확인
-        let existingKeyword = await prisma.searchKeyword.findFirst({
-            where: { keyword }, // 검색어가 있는지 확인
-        });
-
-        if (existingKeyword) {
-            // 검색어가 존재하면 search_count 증가
-            await prisma.searchKeyword.update({
-                where: { keyword_id: existingKeyword.keyword_id },
-                data: { search_count: { increment: 1 } },
-            });
-        } else {
-            // 존재하지 않으면 새로 생성
-            existingKeyword = await prisma.searchKeyword.create({
-                data: { keyword, search_count: 1 },
-            });
+        // 1. 사용자 ID를 숫자로 변환
+        const parsedUserId = parseInt(user_id, 10);
+        
+        // 2. 유효성 검사
+        if (isNaN(parsedUserId) || !keyword || typeof keyword !== 'string') {
+            return res.status(400).json({ error: '유효하지 않은 사용자 ID 또는 검색어입니다.' });
         }
 
-        // 검색 기록 저장
-        await prisma.searchHistory.create({
-            data: {
-                user_id,
-                keyword_id: existingKeyword.keyword_id, // 생성되거나 기존의 키워드 ID 사용
-                searched_at: new Date(),
-            },
+        // 3. 사용자 ID가 유효한지 확인
+        const user = await prisma.users.findUnique({
+            where: { id: parsedUserId },
+        });
+
+        if (!user) {
+            return res.status(400).json({ error: '유효하지 않은 사용자 ID입니다.' });
+        }
+
+        // 4. 대소문자 통일을 위해 키워드를 소문자로 변환
+        const normalizedKeyword = keyword.toLowerCase();
+
+        // 5. 데이터베이스 작업을 트랜잭션으로 묶기
+        await prisma.$transaction(async (prisma) => {
+            // 기존 키워드 검색
+            let existingKeyword = await prisma.searchKeyword.findFirst({
+                where: { keyword: normalizedKeyword },
+            });
+
+            if (existingKeyword) {
+                // 기존 키워드가 있다면 검색 횟수 증가
+                await prisma.searchKeyword.update({
+                    where: { keyword_id: existingKeyword.keyword_id },
+                    data: { search_count: { increment: 1 } },
+                });
+            } else {
+                // 키워드가 없다면 새로 생성
+                existingKeyword = await prisma.searchKeyword.create({
+                    data: { keyword: normalizedKeyword, search_count: 1 },
+                });
+            }
+
+            // 검색 기록 저장
+            await prisma.searchHistory.create({
+                data: {
+                    user_id: parsedUserId, // 변환된 user_id 사용
+                    keyword_id: existingKeyword.keyword_id,
+                    searched_at: new Date(),
+                },
+            });
         });
 
         res.status(201).json({ message: '검색어가 저장되었습니다.' });
     } catch (error) {
         console.error('Error in saveSearchKeyword:', error);
-        res.status(500).json({ error: '검색어 저장 중 오류가 발생했습니다.', details: error.message }); // 에러 세부 정보 추가
+        res.status(500).json({
+            error: '검색어 저장 중 오류가 발생했습니다.',
+            details: error.message,
+        });
     }
 };
+
+
 
 
 module.exports = {
